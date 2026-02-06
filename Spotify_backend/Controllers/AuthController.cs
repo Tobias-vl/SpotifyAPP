@@ -9,7 +9,7 @@ namespace Spotify_backend.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly string redirectUri = "https://127.0.0.1:7115/callback";
+        private readonly string redirectUri = "http://127.0.0.1:5058/callback";
 
         [HttpGet("login")]
         public IActionResult Login()
@@ -18,7 +18,7 @@ namespace Spotify_backend.Controllers
             var yaml = System.IO.File.ReadAllText("config.yaml");
 
             var deserializer = new DeserializerBuilder()
-           .WithNamingConvention(CamelCaseNamingConvention.Instance) // match camelCase in YAML
+           .WithNamingConvention(CamelCaseNamingConvention.Instance)
            .Build();
 
             var config = deserializer.Deserialize<AppSettings>(yaml);
@@ -29,7 +29,7 @@ namespace Spotify_backend.Controllers
 
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["response_type"] = "code";
-            query["client_id"] = config.clientId;
+            query["client_id"] = config.app.clientId;
             query["scope"] = scope;
             query["redirect_uri"] = redirectUri;
             query["state"] = state;
@@ -47,12 +47,12 @@ namespace Spotify_backend.Controllers
             var yaml = System.IO.File.ReadAllText("config.yaml");
 
             var deserializer = new DeserializerBuilder()
-           .WithNamingConvention(CamelCaseNamingConvention.Instance) // match camelCase in YAML
+           .WithNamingConvention(CamelCaseNamingConvention.Instance)
            .Build();
 
             var config = deserializer.Deserialize<AppSettings>(yaml);
 
-            var clientSecret = config.clientSecret;
+            var clientSecret = config.app.clientSecret;
 
             if (storedState == null || storedState != state)
             {
@@ -65,7 +65,7 @@ namespace Spotify_backend.Controllers
         { "grant_type", "authorization_code" },
         { "code", code },
         { "redirect_uri", redirectUri },
-        { "client_id", config.clientId },
+        { "client_id", config.app.clientId },
         { "client_secret", clientSecret }
     });
 
