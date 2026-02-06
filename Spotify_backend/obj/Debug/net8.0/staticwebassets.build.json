@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Ig0vYAfjc6KMMXjfegTiLmbCvuTRqfDIduk5+XYJnO0=",
+  "Source": "Spotify_backend",
+  "BasePath": "_content/Spotify_backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
