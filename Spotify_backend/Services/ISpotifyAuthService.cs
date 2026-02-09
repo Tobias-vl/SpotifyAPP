@@ -4,5 +4,7 @@
     {
         string GenerateLoginUrl(HttpContext context);
         Task<string> ExchangeCodeForToken(string code, string state);
+
+        Task<string> RenewToken();
     }
 }

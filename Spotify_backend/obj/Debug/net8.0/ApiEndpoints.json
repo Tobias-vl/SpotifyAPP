@@ -29,5 +29,15 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.AuthController",
+    "Method": "RenewToken",
+    "RelativePath": "RenewToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Web;
-
 using Spotify_backend.Services;
 
 namespace Spotify_backend.Controllers
@@ -30,6 +28,14 @@ namespace Spotify_backend.Controllers
         {
             
             var tokenObj = await _spotify.ExchangeCodeForToken(code, state);
+            return Ok(tokenObj);
+        }
+
+        [HttpPost("RenewToken")]
+
+        public async Task<IActionResult> RenewToken()
+        {
+            var tokenObj = await _spotify.RenewToken();
             return Ok(tokenObj);
         }
 
