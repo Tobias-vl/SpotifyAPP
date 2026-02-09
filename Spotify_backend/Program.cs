@@ -1,3 +1,5 @@
+using Spotify_backend.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,10 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<StateGenerate>();
+builder.Services.AddScoped<ISpotifyAuthService, SpotifyAuthService>();
 
 builder.Services.AddSession(options =>
 {

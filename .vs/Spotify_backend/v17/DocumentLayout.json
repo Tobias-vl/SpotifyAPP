@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\services\\spotifyauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\services\\spotifyauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\services\\ispotifyauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\services\\ispotifyauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\services\\stategenerate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\services\\stategenerate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\services\\getplayersplaylist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\services\\getplayersplaylist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|solutionrelative:spotify_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2177A2EA-8C84-4A5A-91AF-20D17E52D163}|Spotify_backend\\Spotify_backend.csproj|c:\\users\\tobias lauritsen\\onedrive\\skrivebord\\folder\\spotifyapp\\spotify_backend\\config.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -38,20 +62,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StateGenerate.cs",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\StateGenerate.cs",
+              "RelativeDocumentMoniker": "Spotify_backend\\Services\\StateGenerate.cs",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\StateGenerate.cs",
+              "RelativeToolTip": "Spotify_backend\\Services\\StateGenerate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T16:32:24.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Program.cs",
+              "RelativeDocumentMoniker": "Spotify_backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Program.cs",
+              "RelativeToolTip": "Spotify_backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T16:26:46.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ISpotifyAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\ISpotifyAuthService.cs",
+              "RelativeDocumentMoniker": "Spotify_backend\\Services\\ISpotifyAuthService.cs",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\ISpotifyAuthService.cs",
+              "RelativeToolTip": "Spotify_backend\\Services\\ISpotifyAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T16:26:14.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpotifyAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\SpotifyAuthService.cs",
+              "RelativeDocumentMoniker": "Spotify_backend\\Services\\SpotifyAuthService.cs",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\SpotifyAuthService.cs",
+              "RelativeToolTip": "Spotify_backend\\Services\\SpotifyAuthService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowD8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T16:24:50.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetPlayersPlaylist.cs",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\GetPlayersPlaylist.cs",
+              "RelativeDocumentMoniker": "Spotify_backend\\Services\\GetPlayersPlaylist.cs",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\GetPlayersPlaylist.cs",
+              "RelativeToolTip": "Spotify_backend\\Services\\GetPlayersPlaylist.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T15:57:25.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Spotify_backend\\Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Properties\\launchSettings.json",
               "RelativeToolTip": "Spotify_backend\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-02-06T22:26:40.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "AppSettings.cs",
               "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\AppSettings.cs",
               "RelativeDocumentMoniker": "Spotify_backend\\AppSettings.cs",
@@ -64,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "config.yaml",
               "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\config.yaml",
               "RelativeDocumentMoniker": "Spotify_backend\\config.yaml",
@@ -72,20 +161,32 @@
               "RelativeToolTip": "Spotify_backend\\config.yaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2026-02-06T22:13:00.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-06T22:13:00.936Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Spotify_backend\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Spotify_backend\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-06T22:11:51.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\appsettings.json",
+              "RelativeDocumentMoniker": "Spotify_backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\appsettings.json",
+              "RelativeToolTip": "Spotify_backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-09T15:39:14.108Z",
               "EditorCaption": ""
             }
           ]
