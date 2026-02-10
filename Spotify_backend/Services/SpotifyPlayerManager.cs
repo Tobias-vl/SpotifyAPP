@@ -1,7 +1,6 @@
 ﻿namespace Spotify_backend.Services
 {
-    public class SpotifyGetPlayers
+    public class Class
     {
-
     }
 }
