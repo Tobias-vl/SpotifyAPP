@@ -33,9 +33,9 @@ namespace Spotify_backend.Controllers
 
         [HttpPost("RenewToken")]
 
-        public async Task<IActionResult> RenewToken()
+        public async Task<IActionResult> RenewToken(string UserId)
         {
-            var tokenObj = await _spotify.RenewToken();
+            var tokenObj = await _spotify.RenewToken(UserId);
             return Ok(tokenObj);
         }
 

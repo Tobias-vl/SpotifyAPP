@@ -3,6 +3,7 @@ using YamlDotNet.Serialization.NamingConventions;
 using YamlDotNet.Serialization;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using Spotify_backend.Models;
 
 namespace Spotify_backend.Services
 {
@@ -10,18 +11,19 @@ namespace Spotify_backend.Services
     public class SpotifyAuthService : ISpotifyAuthService
     {
 
-        private readonly IHttpContextAccessor _accessor;
+        
         private readonly StateGenerate _stateGenerate;
+        private readonly SpotifyPlayerManager _playerManager;
 
-        public SpotifyAuthService(IHttpContextAccessor accessor, StateGenerate stateGenerate)
+        public SpotifyAuthService( StateGenerate stateGenerate, SpotifyPlayerManager playerManager)
         {
-            _accessor = accessor;
+           
             _stateGenerate = stateGenerate;
+            _playerManager = playerManager;
         }
 
         async Task<string> ISpotifyAuthService.ExchangeCodeForToken(string code, string state)
         {
-            var storedState = _accessor.HttpContext.Session.GetString("oauth_state");
             var yaml = System.IO.File.ReadAllText("config.yaml");
 
             var deserializer = new DeserializerBuilder()
@@ -31,11 +33,11 @@ namespace Spotify_backend.Services
             var config = deserializer.Deserialize<AppSettings>(yaml);
 
             var clientSecret = config.app.clientSecret;
-            //todo: fix
-            //if (storedState == null || storedState != state)
-            //{
-            //    return BadRequest("Invalid state");
-            //}
+            var tempPlayer = _playerManager.Get(state);
+            if (tempPlayer == null)
+            {
+                throw new InvalidOperationException("Invalid state");
+            }
 
             using var http = new HttpClient();
             var body = new FormUrlEncodedContent(new Dictionary<string, string>
@@ -50,12 +52,13 @@ namespace Spotify_backend.Services
             var response = await http.PostAsync("https://accounts.spotify.com/api/token", body);
             var json = await response.Content.ReadAsStringAsync();
 
-            var tokenObj = System.Text.Json.JsonSerializer.Deserialize<SpotifyTokenResponse>(json);
+            var tokenObj = System.Text.Json.JsonSerializer.Deserialize<SpotifyTokenResponse>(json); 
 
-            _accessor.HttpContext.Session.SetString("spotify_access_token", tokenObj.access_token);
-            _accessor.HttpContext.Session.SetString("spotify_refresh_token", tokenObj.refresh_token);
+            var player = new SpotifyPlayer(tokenObj.access_token, tokenObj.refresh_token, DateTime.UtcNow.AddSeconds(tokenObj.expires_in));
+            var PlayerManager = new SpotifyPlayerManager();
+            PlayerManager.AddOrUpdate(state, player);
 
-            return json;
+            return tokenObj.access_token;
         }
 
         string ISpotifyAuthService.GenerateLoginUrl(HttpContext context)
@@ -68,8 +71,10 @@ namespace Spotify_backend.Services
 
             var config = deserializer.Deserialize<AppSettings>(yaml);
             string state = _stateGenerate.GenerateRandomString(16);
+
+            var tempplayer = new SpotifyPlayer("", "", DateTime.MinValue);
+            _playerManager.AddOrUpdate(state, tempplayer);
             string scope = "user-read-private user-read-email playlist-read-private ";
-            _accessor.HttpContext.Session.SetString("oauth_state", state);
 
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["response_type"] = "code";
@@ -83,9 +88,17 @@ namespace Spotify_backend.Services
             return url;
         }
 
-        async Task<string> ISpotifyAuthService.RenewToken()
+        async Task<string> ISpotifyAuthService.RenewToken(string userId)
         {
-            var refreshToken = "AQAKy-exehSKGKyx4803JLLS9qsg0-Q8TnrC5eLDgQkY6scLPNKYpD_HKJiSxXseVX_ksSNr1yDMYvje6PzESJoN3CGPJNwuKbW6lc7zYrgPK0wRk6rZAubmPmOK20NrsCE";
+
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+            {
+                throw new Exception("Player not found");
+            }
+
+            var refreshToken = player.RefreshToken;
 
             if (string.IsNullOrEmpty(refreshToken))
             {
@@ -113,12 +126,11 @@ namespace Spotify_backend.Services
 
             var tokenObj = JsonSerializer.Deserialize<SpotifyTokenResponse>(json);
 
-            _accessor.HttpContext.Session.SetString("spotify_access_token", tokenObj.access_token);
-
-            if (!string.IsNullOrEmpty(tokenObj.refresh_token))
-            {
-                _accessor.HttpContext.Session.SetString("spotify_refresh_token", tokenObj.refresh_token);
-            }
+            player.UpdateTokens(
+                accessToken: tokenObj.access_token,
+                refreshToken: tokenObj.refresh_token ?? player.RefreshToken,
+                expiresAt: DateTime.UtcNow.AddSeconds(tokenObj.expires_in)
+            );
 
             return tokenObj.access_token;
 
