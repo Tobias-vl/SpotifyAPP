@@ -98,8 +98,7 @@
               "RelativeToolTip": "Spotify_backend\\Models\\SpotifyProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T21:27:35.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T21:27:35.433Z"
             },
             {
               "$type": "Document",
@@ -111,8 +110,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\SpotifyGetInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T21:09:02.038Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T21:09:02.038Z"
             },
             {
               "$type": "Document",
@@ -124,8 +122,7 @@
               "RelativeToolTip": "Spotify_backend\\Models\\SpotifyPlayer.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAIwB4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:42:25.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:42:25.868Z"
             },
             {
               "$type": "Document",
@@ -137,8 +134,7 @@
               "RelativeToolTip": "Spotify_backend\\Controllers\\SpotifyPlayerController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:44:22.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:44:22.901Z"
             },
             {
               "$type": "Document",
@@ -150,8 +146,7 @@
               "RelativeToolTip": "Spotify_backend\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAkwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T22:11:51.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-06T22:11:51.323Z"
             },
             {
               "$type": "Document",
@@ -163,8 +158,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\SpotifyPlayerManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T19:29:27.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T19:29:27.154Z"
             },
             {
               "$type": "Document",
@@ -176,8 +170,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\SpotifyPlaylistService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:41:45.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:41:45.622Z"
             },
             {
               "$type": "Document",
@@ -189,8 +182,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\SpotifyTokenResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T20:57:31.694Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T20:57:31.694Z"
             },
             {
               "$type": "Document",
@@ -200,7 +192,7 @@
               "RelativeDocumentMoniker": "Spotify_backend\\Services\\SpotifyAuthService.cs",
               "ToolTip": "C:\\Users\\Tobias Lauritsen\\OneDrive\\Skrivebord\\Folder\\SpotifyAPP\\Spotify_backend\\Services\\SpotifyAuthService.cs",
               "RelativeToolTip": "Spotify_backend\\Services\\SpotifyAuthService.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAowFEAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwH4AAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T16:24:50.755Z",
               "EditorCaption": ""
@@ -215,8 +207,7 @@
               "RelativeToolTip": "Spotify_backend\\Controllers\\SpotifyPlaylistController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:39:29.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:39:29.286Z"
             },
             {
               "$type": "Document",
@@ -228,8 +219,7 @@
               "RelativeToolTip": "Spotify_backend\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T16:26:46.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T16:26:46.621Z"
             },
             {
               "$type": "Document",
@@ -241,8 +231,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\ISpotifyAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T16:26:14.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T16:26:14.722Z"
             },
             {
               "$type": "Document",
@@ -254,8 +243,7 @@
               "RelativeToolTip": "Spotify_backend\\Services\\StateGenerate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T16:32:24.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T16:32:24.581Z"
             },
             {
               "$type": "Document",
