@@ -22,10 +22,11 @@ namespace Spotify_backend.Controllers
         {
             var player = _playerManager.Get(userId);
 
-            if (player == null)
-                return BadRequest("Player not found in manager.");
+            if (player == null || player.AccessToken == null)
+                return BadRequest("Player not found in manager. or AccessToken er null");
 
-            var profile = await _spotifyGetInfo.GetProfile(player.AccessToken);
+
+            var profile = await _spotifyGetInfo.GetProfile(player.AccessToken, userId);
 
             return Ok(profile);
         }

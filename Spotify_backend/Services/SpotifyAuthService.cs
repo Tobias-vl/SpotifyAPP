@@ -56,7 +56,7 @@ namespace Spotify_backend.Services
             var player = new SpotifyPlayer(tokenObj.access_token, tokenObj.refresh_token, DateTime.UtcNow.AddSeconds(tokenObj.expires_in));
             _playerManager.AddOrUpdate(state, player);
 
-            return tokenObj.access_token;
+            return state;
         }
 
         string ISpotifyAuthService.GenerateLoginUrl(HttpContext context)

@@ -6,22 +6,48 @@ namespace Spotify_backend.Services
 {
     public class SpotifyGetInfo
     {
-        public async Task<SpotifyProfile> GetProfile(string accessToken)
+
+        private readonly SpotifyPlayerManager _playerManager;
+
+        public SpotifyGetInfo(SpotifyPlayerManager playerManager)
+        {
+            _playerManager = playerManager;
+        }
+
+        public async Task<SpotifyProfile> GetProfile(string accessToken, string state)
         {
             using var http = new HttpClient();
 
             http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             var response = await http.GetAsync("https://api.spotify.com/v1/me");
 
+            if (!response.IsSuccessStatusCode)
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
+            }
+
             var json = await response.Content.ReadAsStringAsync();
 
-            var profile = JsonSerializer.Deserialize<SpotifyProfile>(json);
+            var profile = JsonSerializer.Deserialize<SpotifyProfile>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             if (profile == null)
             {
                 throw new InvalidOperationException("Failed to deserialize Spotify profile.");
             }
 
+            _playerManager.ReplaceKey(state, profile.id);
+            var player = _playerManager.Get(profile.id);
+
+            if (player == null)
+            {
+                throw new InvalidOperationException("Player don't exist");
+            }
+
+            player.SetName(profile.display_name);
             return profile;
             
         }
