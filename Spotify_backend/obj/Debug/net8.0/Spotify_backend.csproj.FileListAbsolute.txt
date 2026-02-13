@@ -62,11 +62,6 @@ C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_backend.sourcelink.json
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets\msbuild.Spotify_backend.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets\msbuild.build.Spotify_backend.props
-C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Spotify_backend.props
-C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Spotify_backend.props
-C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\scopedcss\bundle\Spotify_backend.styles.css
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_.AE01B520.Up2Date
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_backend.dll
@@ -74,3 +69,11 @@ C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_backend.pdb
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_backend.genruntimeconfig.cache
 C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\ref\Spotify_backend.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Spotify_backend.staticwebassets.endpoints.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

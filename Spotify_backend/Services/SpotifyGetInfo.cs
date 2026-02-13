@@ -16,6 +16,11 @@ namespace Spotify_backend.Services
 
         public async Task<SpotifyProfile> GetProfile(string accessToken, string state)
         {
+
+            if (accessToken == null)
+            {
+                throw new Exception("accessToken is null");
+            }
             using var http = new HttpClient();
 
             http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
