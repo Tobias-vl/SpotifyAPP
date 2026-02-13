@@ -54,7 +54,6 @@ namespace Spotify_backend.Services
 
             player.SetName(profile.display_name);
             return profile;
-            
         }
     }
 }
