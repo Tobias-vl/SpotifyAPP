@@ -32,7 +32,6 @@ namespace Spotify_backend.Services
 
             var config = deserializer.Deserialize<AppSettings>(yaml);
 
-            var clientSecret = config.app.clientSecret;
             var tempPlayer = _playerManager.Get(state);
             if (tempPlayer == null)
             {
@@ -46,7 +45,7 @@ namespace Spotify_backend.Services
         { "code", code },
         { "redirect_uri", "http://127.0.0.1:5058/callback" },
         { "client_id", config.app.clientId },
-        { "client_secret", clientSecret }
+        { "client_secret", config.app.clientSecret }
     });
 
             var response = await http.PostAsync("https://accounts.spotify.com/api/token", body);
@@ -55,8 +54,7 @@ namespace Spotify_backend.Services
             var tokenObj = System.Text.Json.JsonSerializer.Deserialize<SpotifyTokenResponse>(json); 
 
             var player = new SpotifyPlayer(tokenObj.access_token, tokenObj.refresh_token, DateTime.UtcNow.AddSeconds(tokenObj.expires_in));
-            var PlayerManager = new SpotifyPlayerManager();
-            PlayerManager.AddOrUpdate(state, player);
+            _playerManager.AddOrUpdate(state, player);
 
             return tokenObj.access_token;
         }

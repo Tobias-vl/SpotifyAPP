@@ -9,6 +9,7 @@ namespace Spotify_backend.Models
         public string RefreshToken { get; private set; }
         public string? UserId { get; private set; }
         public DateTime ExpiresAt { get; private set; }
+        public string? Name { get; private set; }
 
         public SpotifyPlayer(string accessToken, string refreshToken, DateTime expiresAt)
         {
@@ -20,6 +21,11 @@ namespace Spotify_backend.Models
         public void SetUserId(string userId)
         {
             UserId = userId;
+        }
+
+        public void SetName(string name)
+        {
+            Name = name;
         }
 
         public void UpdateAccessToken(string accessToken)

@@ -31,13 +31,35 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "TestProfile",
+    "RelativePath": "profile/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Spotify_backend.Controllers.AuthController",
     "Method": "RenewToken",
     "RelativePath": "RenewToken",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   }
 ]

@@ -15,6 +15,8 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<StateGenerate>();
 builder.Services.AddScoped<ISpotifyAuthService, SpotifyAuthService>();
+builder.Services.AddSingleton<SpotifyPlayerManager>();
+builder.Services.AddScoped<SpotifyGetInfo>();
 
 builder.Services.AddSession(options =>
 {
