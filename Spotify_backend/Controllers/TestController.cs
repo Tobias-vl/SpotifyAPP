@@ -39,7 +39,7 @@ namespace Spotify_backend.Controllers
         public async Task<IActionResult> TestGetPlaylists(string userId)
         {
             var player = _playerManager.Get(userId);
-
+            
             if (player == null)
                 return BadRequest("Player not found in manager.");
 
