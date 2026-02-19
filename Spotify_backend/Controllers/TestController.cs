@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Spotify_backend.Models;
 using Spotify_backend.Services;
-using System.Threading.Tasks;
 
 namespace Spotify_backend.Controllers
 {

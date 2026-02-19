@@ -19,6 +19,8 @@ builder.Services.AddSingleton<SpotifyPlayerManager>();
 builder.Services.AddScoped<SpotifyGetInfo>();
 builder.Services.AddScoped<SpotifyPlaylistService>();
 
+builder.Services.AddHttpClient<SpotifyGetInfo>();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(10);

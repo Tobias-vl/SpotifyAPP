@@ -1,5 +1,7 @@
-﻿using Spotify_backend.Models;
+﻿using Microsoft.OpenApi.Any;
+using Spotify_backend.Models;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 namespace Spotify_backend.Services
@@ -46,6 +48,8 @@ namespace Spotify_backend.Services
 
             _playerManager.ReplaceKey(state, profile.id);
             var player = _playerManager.Get(profile.id);
+            Console.WriteLine($"{player.UserId}");
+            Console.WriteLine($"{profile.id}");
 
             if (player == null)
             {
@@ -53,6 +57,7 @@ namespace Spotify_backend.Services
             }
 
             player.SetName(profile.display_name);
+            Console.WriteLine($"{profile.display_name}");
             return profile;
         }
     }
