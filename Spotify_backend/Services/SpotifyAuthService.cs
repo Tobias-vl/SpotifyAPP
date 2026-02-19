@@ -14,12 +14,14 @@ namespace Spotify_backend.Services
         
         private readonly StateGenerate _stateGenerate;
         private readonly SpotifyPlayerManager _playerManager;
+        private readonly HttpClient _http;
 
-        public SpotifyAuthService( StateGenerate stateGenerate, SpotifyPlayerManager playerManager)
+        public SpotifyAuthService( StateGenerate stateGenerate, SpotifyPlayerManager playerManager, HttpClient http)
         {
            
             _stateGenerate = stateGenerate;
             _playerManager = playerManager;
+            _http = http;
         }
 
         async Task<string> ISpotifyAuthService.ExchangeCodeForToken(string code, string state)
@@ -38,7 +40,6 @@ namespace Spotify_backend.Services
                 throw new InvalidOperationException("Invalid state");
             }
 
-            using var http = new HttpClient();
             var body = new FormUrlEncodedContent(new Dictionary<string, string>
     {
         { "grant_type", "authorization_code" },
@@ -48,7 +49,7 @@ namespace Spotify_backend.Services
         { "client_secret", config.app.clientSecret }
     });
 
-            var response = await http.PostAsync("https://accounts.spotify.com/api/token", body);
+            var response = await _http.PostAsync("https://accounts.spotify.com/api/token", body);
             var json = await response.Content.ReadAsStringAsync();
 
             var tokenObj = System.Text.Json.JsonSerializer.Deserialize<SpotifyTokenResponse>(json); 
@@ -110,7 +111,6 @@ namespace Spotify_backend.Services
            .Build();
             var config = deserializer.Deserialize<AppSettings>(yaml);
 
-            using var http = new HttpClient();
             var body = new FormUrlEncodedContent(new Dictionary<string, string>
             {
                 { "grant_type", "refresh_token" },
@@ -119,7 +119,7 @@ namespace Spotify_backend.Services
                 { "client_secret", config.app.clientSecret }
             });
 
-            var response = await http.PostAsync("https://accounts.spotify.com/api/token", body);
+            var response = await _http.PostAsync("https://accounts.spotify.com/api/token", body);
             var json = await response.Content.ReadAsStringAsync();
 
             var tokenObj = JsonSerializer.Deserialize<SpotifyTokenResponse>(json);

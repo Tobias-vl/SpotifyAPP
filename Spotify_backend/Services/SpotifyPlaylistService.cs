@@ -7,11 +7,12 @@ namespace Spotify_backend.Services
     public class SpotifyPlaylistService
     {
         private readonly SpotifyPlayerManager _playerManager;
+        private readonly HttpClient _http;
 
-
-        public SpotifyPlaylistService(SpotifyPlayerManager playerManager)
+        public SpotifyPlaylistService(SpotifyPlayerManager playerManager, HttpClient http)
         {
             _playerManager = playerManager;
+            _http = http;
         }
 
         public async Task<Playlist> GetPlaylists(string accessToken, string userId)
@@ -20,9 +21,9 @@ namespace Spotify_backend.Services
             {
                 throw new Exception("accessToken is null");
             }
-            using var http = new HttpClient();
-            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await http.GetAsync($"https://api.spotify.com/v1/users/{userId}/playlists");
+
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await _http.GetAsync($"https://api.spotify.com/v1/users/{userId}/playlists");
             if (!response.IsSuccessStatusCode)
             {
                 string error = await response.Content.ReadAsStringAsync();

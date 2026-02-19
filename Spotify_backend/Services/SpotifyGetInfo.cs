@@ -8,12 +8,13 @@ namespace Spotify_backend.Services
 {
     public class SpotifyGetInfo
     {
-
+        private readonly HttpClient _http;
         private readonly SpotifyPlayerManager _playerManager;
 
-        public SpotifyGetInfo(SpotifyPlayerManager playerManager)
+        public SpotifyGetInfo(SpotifyPlayerManager playerManager, HttpClient http)
         {
             _playerManager = playerManager;
+            _http = http;
         }
 
         public async Task<SpotifyProfile> GetProfile(string accessToken, string state)
@@ -23,10 +24,9 @@ namespace Spotify_backend.Services
             {
                 throw new Exception("accessToken is null");
             }
-            using var http = new HttpClient();
 
-            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await http.GetAsync("https://api.spotify.com/v1/me");
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await _http.GetAsync("https://api.spotify.com/v1/me");
 
             if (!response.IsSuccessStatusCode)
             {

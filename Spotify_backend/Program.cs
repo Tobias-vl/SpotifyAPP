@@ -20,6 +20,8 @@ builder.Services.AddScoped<SpotifyGetInfo>();
 builder.Services.AddScoped<SpotifyPlaylistService>();
 
 builder.Services.AddHttpClient<SpotifyGetInfo>();
+builder.Services.AddHttpClient<SpotifyAuthService>();
+builder.Services.AddHttpClient<SpotifyPlaylistService>();
 
 builder.Services.AddSession(options =>
 {
