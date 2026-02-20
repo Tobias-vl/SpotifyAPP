@@ -25,13 +25,9 @@ namespace Spotify_backend.Services
                 _player[newKey] = player;
             }
         }
-
         public bool Remove(string key)
         {
             return _player.Remove(key);
         }
-
-
-            
     }
 }
