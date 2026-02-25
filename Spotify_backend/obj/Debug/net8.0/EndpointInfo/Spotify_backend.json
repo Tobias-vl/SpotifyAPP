@@ -66,7 +66,7 @@
         }
       }
     },
-    "/profile/{userId}": {
+    "/playlist/{userId}": {
       "get": {
         "tags": [
           "Test"
@@ -88,7 +88,36 @@
         }
       }
     },
-    "/playlist/{userId}": {
+    "/playlistItems/{userId}": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "parameters": [
+          {
+            "name": "PlaylistId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/{userId}": {
       "get": {
         "tags": [
           "Test"

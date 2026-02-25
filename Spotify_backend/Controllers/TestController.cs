@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Spotify_backend.Services;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Spotify_backend.Controllers
 {
@@ -19,20 +20,6 @@ namespace Spotify_backend.Controllers
             _spotifyGetInfo = spotifyGetInfo;
         }
 
-        [HttpGet("profile/{userId}")]
-        public async Task<IActionResult> TestProfile(string userId)
-        {
-            var player = _playerManager.Get(userId);
-
-            if (player == null)
-                return BadRequest("Player not found in manager.");
-
-
-            var profile = await _spotifyGetInfo.GetProfile(player.AccessToken, userId);
-
-            return Ok(profile);
-        }
-
         [HttpGet("playlist/{userId}")]
         public async Task<IActionResult> TestGetPlaylists(string userId)
         {
@@ -45,6 +32,36 @@ namespace Spotify_backend.Controllers
 
             return Ok(playlist);
         }
+
+        [HttpGet("playlistItems/{userId}")]
+        public async Task<IActionResult> TestGetPlaylistItems(string PlaylistId, string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return BadRequest("Player not found in manager.");
+
+            var playlistItems = await _spotifyPlaylistService.GetPlaylistItems(player.AccessToken, PlaylistId);
+
+            return Ok(playlistItems);
+        }
+
+        [HttpGet("/{userId}")]
+        public async Task<IActionResult> GetSteamlineId(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return BadRequest("Player not found in manager.");
+
+            var profile = await _spotifyGetInfo.GetProfile(player.AccessToken, userId);
+
+            return Ok(profile); 
+
+            
+        }
+
+
 
     }
 

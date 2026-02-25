@@ -17,7 +17,7 @@ namespace Spotify_backend.Services
             _http = http;
         }
 
-        public async Task<Playlist> GetPlaylists(string accessToken, string userId)
+        public async Task<Playlists> GetPlaylists(string accessToken, string userId)
         {
             if (accessToken == null)
             {
@@ -32,7 +32,7 @@ namespace Spotify_backend.Services
                 throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
             }
             var json = await response.Content.ReadAsStringAsync();
-            var ListOfPlaylist = JsonSerializer.Deserialize<Playlist>(json, new JsonSerializerOptions
+            var ListOfPlaylist = JsonSerializer.Deserialize<Playlists>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });
@@ -47,17 +47,17 @@ namespace Spotify_backend.Services
         }
 
 
-        public async Task<PlaylistItems> GetPlaylistItems(string playlist_id, string accessToken)
+        public async Task<TrackItem> GetPlaylistItems(string accessToken, string playlist_id)
         {
             _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await _http.GetAsync($"https://api.spotify.com/v1/playlists/{playlist_id}/items");
+            var response = await _http.GetAsync($"https://api.spotify.com/v1/playlists/{playlist_id}/tracks ");
             if (!response.IsSuccessStatusCode)
             {
                 string error = await response.Content.ReadAsStringAsync();
                 throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
             }
             var json = await response.Content.ReadAsStringAsync();
-            var playlistItems = JsonSerializer.Deserialize<PlaylistItems>(json, new JsonSerializerOptions
+            var playlistItems = JsonSerializer.Deserialize<TrackItem>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });

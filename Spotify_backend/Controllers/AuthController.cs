@@ -8,10 +8,14 @@ namespace Spotify_backend.Controllers
     {
 
         private readonly ISpotifyAuthService _spotify;
+        private readonly SpotifyGetInfo _GetSpotify;
+        private readonly SpotifyPlayerManager _playerManager;
 
-        public AuthController(ISpotifyAuthService spotify)
+        public AuthController(ISpotifyAuthService spotify, SpotifyGetInfo GetSpotify, SpotifyPlayerManager playerManager)
         {
             _spotify = spotify;
+            _GetSpotify = GetSpotify;
+            _playerManager = playerManager;
         }
 
         [HttpGet("login")]
@@ -28,7 +32,11 @@ namespace Spotify_backend.Controllers
         {
             
             var tokenObj = await _spotify.ExchangeCodeForToken(code, state);
-            return Ok(tokenObj);
+
+            var player = _playerManager.Get(state) ?? throw new Exception("Player was Null");
+            var profile = await _GetSpotify.GetProfile(player.AccessToken, state);
+
+            return Ok(profile.id);
         }
 
         [HttpPost("RenewToken")]

@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "GetSteamlineId",
+    "RelativePath": "{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Spotify_backend.Controllers.AuthController",
     "Method": "Callback",
     "RelativePath": "callback",
@@ -48,12 +64,17 @@
   },
   {
     "ContainingType": "Spotify_backend.Controllers.TestController",
-    "Method": "TestProfile",
-    "RelativePath": "profile/{userId}",
+    "Method": "TestGetPlaylistItems",
+    "RelativePath": "playlistItems/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "PlaylistId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
       {
         "Name": "userId",
         "Type": "System.String",

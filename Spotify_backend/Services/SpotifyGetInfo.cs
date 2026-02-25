@@ -53,8 +53,6 @@ namespace Spotify_backend.Services
             player.SetUserId(profile.id);
             player.SetName(profile.display_name);
 
-            Console.WriteLine($"{player.Name}");
-            Console.WriteLine($"{player.UserId}");
             return profile;
         }
 
