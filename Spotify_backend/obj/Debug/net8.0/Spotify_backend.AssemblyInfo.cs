@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Spotify_backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ca1ec126a249670e3a7f38736f6973c409f1e72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2692c9ffea22b1f1252620a3e6e6ceb263bda87")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spotify_backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Spotify_backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

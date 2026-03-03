@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Mvc;
 using Spotify_backend.Models;
 using System.Net.Http.Headers;
 using System.Text;
@@ -49,6 +50,7 @@ namespace Spotify_backend.Services
 
         public async Task<TrackItem> GetPlaylistItems(string accessToken, string playlist_id)
         {
+
             _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             var response = await _http.GetAsync($"https://api.spotify.com/v1/playlists/{playlist_id}/tracks ");
             if (!response.IsSuccessStatusCode)
@@ -69,6 +71,27 @@ namespace Spotify_backend.Services
 
             return playlistItems;
 
+        }
+
+        public async Task<CurrenttrackItem> GetCurrentTrack(string accessToken)
+        {
+
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await _http.GetAsync("https://api.spotify.com/v1/me/player/currently-playing");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var CurrentTrack = JsonSerializer.Deserialize<CurrenttrackItem>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            return CurrentTrack;
         }
 
         public async Task<string> DeletePlaylistItems(string playlist_id, string accessToken)
@@ -114,6 +137,7 @@ namespace Spotify_backend.Services
             var responseJson = await response.Content.ReadAsStringAsync();
             return responseJson;
         }
+
 
 
 

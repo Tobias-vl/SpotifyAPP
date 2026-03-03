@@ -46,19 +46,17 @@ namespace Spotify_backend.Controllers
             return Ok(playlistItems);
         }
 
-        [HttpGet("/{userId}")]
-        public async Task<IActionResult> GetSteamlineId(string userId)
+        [HttpGet("CurrentTrack/{userId}")]
+        public async Task<IActionResult> GetCurrentTrack(string userId)
         {
             var player = _playerManager.Get(userId);
 
             if (player == null)
                 return BadRequest("Player not found in manager.");
 
-            var profile = await _spotifyGetInfo.GetProfile(player.AccessToken, userId);
+            var CurrentTrack = await _spotifyPlaylistService.GetCurrentTrack(player.AccessToken);
 
-            return Ok(profile); 
-
-            
+            return Ok(CurrentTrack);
         }
 
 
