@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Mvc;
 using Spotify_backend.Models;
+using System.Collections.Immutable;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -92,6 +93,28 @@ namespace Spotify_backend.Services
             });
 
             return CurrentTrack;
+        }
+
+        public async Task<TrackItem> GetTracks(string accessToken, string userId)
+        {
+            var listPlayist = await GetPlaylists(accessToken, userId);
+            string playlistID = null;
+            foreach (var playlist in listPlayist.Items)
+            {
+                if(playlist.Name == "On Repeat")
+                {
+                    playlistID = playlist.Id; break;
+                }
+            }
+
+            if (playlistID == null)
+            {
+                throw new Exception("On repeat playlist not found");
+            }
+
+            var PlaylistTrack = await GetPlaylistItems(accessToken, playlistID);
+
+            return PlaylistTrack;
         }
 
         public async Task<string> DeletePlaylistItems(string playlist_id, string accessToken)

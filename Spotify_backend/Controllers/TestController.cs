@@ -59,6 +59,19 @@ namespace Spotify_backend.Controllers
             return Ok(CurrentTrack);
         }
 
+        [HttpGet("GetTracks/{userId}")]
+        public async Task<IActionResult> GetTracks(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return BadRequest("Player not found in manager.");
+
+            var json = await _spotifyPlaylistService.GetTracks(player.AccessToken, userId);
+
+            return Ok(json);
+        }
+
 
 
     }
