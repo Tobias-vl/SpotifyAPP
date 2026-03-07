@@ -1,5 +1,50 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Connect To Backend With SignalR (ASP.NET)
+
+1. Install the client package:
+
+```bash
+npm install @microsoft/signalr
+```
+
+2. Create `.env.local` in the project root:
+
+```bash
+NEXT_PUBLIC_SIGNALR_URL=http://localhost:5058/hubs/chat
+```
+
+3. Add SignalR and CORS in your ASP.NET backend.
+
+Example backend config:
+
+```csharp
+builder.Services.AddSignalR();
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("Frontend", policy =>
+	{
+		policy
+			.WithOrigins("http://localhost:3000")
+			.AllowAnyHeader()
+			.AllowAnyMethod()
+			.AllowCredentials();
+	});
+});
+
+app.UseCors("Frontend");
+app.MapHub<ChatHub>("/hubs/chat");
+```
+
+4. Run frontend:
+
+```bash
+npm run dev
+```
+
+The frontend page (`app/page.tsx`) now connects on load, invokes `SendMessage`, and listens for `ReceiveMessage`.
+
 ## Getting Started
 
 First, run the development server:
