@@ -36,6 +36,8 @@ namespace Spotify_backend.Controllers
             var player = _playerManager.Get(state) ?? throw new Exception("Player was Null");
             var profile = await _GetSpotify.GetProfile(player.AccessToken, state);
 
+            player.SetName(profile.display_name);
+
             return Ok(profile.id);
         }
 

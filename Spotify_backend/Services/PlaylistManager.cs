@@ -4,12 +4,12 @@ namespace Spotify_backend.Services
 {
     public class PlaylistManager
     {
-        public readonly Dictionary<string, Playlist> _ListOfPlaylist = new();
+        public readonly Dictionary<string, TrackItem> Playlist = new();
     
 
-        public void AddPlaylist(Playlist playlist)
+        public void AddPlaylist(TrackItem playlistitem)
         {
-            _ListOfPlaylist.Add(playlist.Name, playlist);
+            Playlist.Add(playlistitem.Track_owner, playlistitem);
         }
     }
 }

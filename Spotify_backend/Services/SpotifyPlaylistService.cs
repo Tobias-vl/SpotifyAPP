@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Spotify_backend.Models;
 using System.Collections.Immutable;
 using System.Net.Http.Headers;
@@ -95,7 +96,7 @@ namespace Spotify_backend.Services
             return CurrentTrack;
         }
 
-        public async Task<TrackItem> GetTracks(string accessToken, string userId)
+        public async Task<List<TrackItem>> GetTracks(string accessToken, string userId)
         {
             var listPlayist = await GetPlaylists(accessToken, userId);
             string playlistID = null;
@@ -112,9 +113,36 @@ namespace Spotify_backend.Services
                 throw new Exception("On repeat playlist not found");
             }
 
-            var PlaylistTrack = await GetPlaylistItems(accessToken, playlistID);
+            var playlistTracks = await GetPlaylistItems(accessToken, playlistID);
 
-            return PlaylistTrack;
+            int number = 3;
+            var trackItems = new List<TrackItem>();
+            var usedID = new List<int>();
+
+            var player = _playerManager.Get(userId) ?? throw new Exception("Player was null when trying to get tracks");
+            playlistTracks.Track_owner = player.Name;
+
+            var random = new Random();
+
+            for (int i = 0; i < number; i++)
+            {
+                int id = random.Next(0, playlistTracks.Track_item.Count);
+
+                if (!usedID.Contains(id))
+                {
+                    trackItems.Add(new TrackItem
+                    {
+                        Track_item = new List<Teack> { playlistTracks.Track_item[id] },
+                        Track_owner = player.Name
+                    });
+                    usedID.Add(id);
+                }
+                else
+                {
+                    i--;
+                }
+            }
+            return trackItems;
         }
 
         public async Task<string> DeletePlaylistItems(string playlist_id, string accessToken)

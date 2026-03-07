@@ -15,6 +15,7 @@ namespace Spotify_backend.Models
     {
         [JsonPropertyName("items")]
         public List<Teack> Track_item { get; set; }
+        public string Track_owner { get; internal set; }
     }
 
     public class Teack
