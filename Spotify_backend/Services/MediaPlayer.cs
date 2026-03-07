@@ -53,5 +53,53 @@ namespace Spotify_backend.Services
             }
         }
 
+        public async Task Resume(string  deviceId, string accessToken)
+        {
+            _http.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var url = $"https://api.spotify.com/v1/me/player/play?device_id={deviceId}";
+
+            var response = await _http.PutAsync(url, null);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
+            }
+        }
+
+        public async Task Skip(string accessToken)
+        {
+            _http.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var url = $"https://api.spotify.com/v1/me/player/next";
+
+            var response = await _http.PostAsync(url, null);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
+            }
+        }
+
+        public async Task Repeat(string accessToken)
+        {
+            _http.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var url = $"https://api.spotify.com/v1/me/player/repeat?state=track";
+
+            var response = await _http.PutAsync(url, null);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Spotify API error ({response.StatusCode}): {error}");
+            }
+        }
+
     }
 }

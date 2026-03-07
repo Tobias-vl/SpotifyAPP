@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Spotify_backend.Models;
 using Spotify_backend.Services;
 using System.Reflection.Metadata.Ecma335;
 
@@ -79,25 +80,62 @@ namespace Spotify_backend.Controllers
         public async Task<IActionResult> Pause(string userId)
         {
             var player = _playerManager.Get(userId);
-            string device_id = "";
 
             if (player == null)
                 return NotFound("Player not found in manager.");
 
-             var devices = await _mediaPlayer.Getdevice(player.AccessToken);
+            var devices = await _mediaPlayer.Getdevice(player.AccessToken);
 
-            if (devices == null)
-                return NotFound("Device not found.");
-
-            foreach (var device in devices.device)
-            {
-               if  (device.name == "TOBIAS-GALAXAY-")
-                {
-                    device_id = device.id;
-                }
-            }
+            string device_id = GetDeviceID(devices);
 
             await _mediaPlayer.Pause(device_id,  player.AccessToken);
+
+            return Ok();
+        }
+
+        [HttpPost("Skip/{userId}")]
+        public async Task<IActionResult> Skip(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return NotFound("Player not found in manager.");
+
+            await _mediaPlayer.Skip(player.AccessToken);
+
+            return Ok();
+        }
+
+        [HttpPost("Resume/{userId}")]
+        public async Task<IActionResult> Resume(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return NotFound("Player not found in manager.");
+
+            var devices = await _mediaPlayer.Getdevice(player.AccessToken);
+
+            string device_id = GetDeviceID(devices);
+
+            await _mediaPlayer.Resume(device_id, player.AccessToken);
+
+            return Ok();
+        }
+
+        [HttpPost("Repeat/{userId}")]
+        public async Task<IActionResult> Loop(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return NotFound("Player not found in manager.");
+
+            var devices = await _mediaPlayer.Getdevice(player.AccessToken);
+
+            string device_id = GetDeviceID(devices);
+
+            await _mediaPlayer.Repeat(player.AccessToken);
 
             return Ok();
         }
@@ -113,6 +151,23 @@ namespace Spotify_backend.Controllers
             var json = await _mediaPlayer.Getdevice(player.AccessToken);
 
             return Ok(json);
+        }
+
+        public string GetDeviceID(Device devices)
+        {
+            string device_id = "";
+            if (devices == null)
+                return "Not found";
+
+            foreach (var device in devices.device)
+            {
+                if (device.name == "TOBIAS-GALAXAY-")
+                {
+                    device_id = device.id;
+                }
+            }
+            return device_id;
+
         }
 
 
