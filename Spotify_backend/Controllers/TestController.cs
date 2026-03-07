@@ -9,15 +9,18 @@ namespace Spotify_backend.Controllers
         private readonly SpotifyPlayerManager _playerManager;
         private readonly SpotifyPlaylistService _spotifyPlaylistService;
         private readonly SpotifyGetInfo _spotifyGetInfo;
+        private readonly MediaPlayer _mediaPlayer;
 
         public TestController(
             SpotifyPlayerManager playerManager,
             SpotifyPlaylistService spotifyPlaylistService,
-            SpotifyGetInfo spotifyGetInfo)
+            SpotifyGetInfo spotifyGetInfo,
+            MediaPlayer mediaPlayer)
         {
             _playerManager = playerManager;
             _spotifyPlaylistService = spotifyPlaylistService;
             _spotifyGetInfo = spotifyGetInfo;
+            _mediaPlayer = mediaPlayer;
         }
 
         [HttpGet("playlist/{userId}")]
@@ -71,6 +74,47 @@ namespace Spotify_backend.Controllers
 
             return Ok(json);
         }
+
+        [HttpPost("Pause/{userId}")]
+        public async Task<IActionResult> Pause(string userId)
+        {
+            var player = _playerManager.Get(userId);
+            string device_id = "";
+
+            if (player == null)
+                return NotFound("Player not found in manager.");
+
+             var devices = await _mediaPlayer.Getdevice(player.AccessToken);
+
+            if (devices == null)
+                return NotFound("Device not found.");
+
+            foreach (var device in devices.device)
+            {
+               if  (device.name == "TOBIAS-GALAXAY-")
+                {
+                    device_id = device.id;
+                }
+            }
+
+            await _mediaPlayer.Pause(device_id,  player.AccessToken);
+
+            return Ok();
+        }
+
+        [HttpGet("Devices/{userId}")]
+        public async Task<IActionResult> GetDevice(string userId)
+        {
+            var player = _playerManager.Get(userId);
+
+            if (player == null)
+                return BadRequest("Player not found in manager.");
+
+            var json = await _mediaPlayer.Getdevice(player.AccessToken);
+
+            return Ok(json);
+        }
+
 
 
 

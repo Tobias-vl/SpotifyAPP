@@ -73,7 +73,7 @@ namespace Spotify_backend.Services
 
             var tempplayer = new SpotifyPlayer("", "", DateTime.MinValue);
             _playerManager.AddOrUpdate(state, tempplayer);
-            string scope = "user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private user-read-currently-playing playlist-read-collaborative";
+            string scope = "user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private user-read-currently-playing playlist-read-collaborative user-modify-playback-state user-read-playback-state";
 
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["response_type"] = "code";

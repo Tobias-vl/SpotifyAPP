@@ -18,6 +18,7 @@ builder.Services.AddScoped<ISpotifyAuthService, SpotifyAuthService>();
 builder.Services.AddSingleton<SpotifyPlayerManager>();
 builder.Services.AddScoped<SpotifyGetInfo>();
 builder.Services.AddScoped<SpotifyPlaylistService>();
+builder.Services.AddScoped<MediaPlayer>();
 
 builder.Services.AddHttpClient<SpotifyGetInfo>();
 builder.Services.AddHttpClient<SpotifyAuthService>();

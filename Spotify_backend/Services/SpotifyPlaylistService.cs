@@ -127,7 +127,6 @@ namespace Spotify_backend.Services
             for (int i = 0; i < number; i++)
             {
                 int id = random.Next(0, playlistTracks.Track_item.Count);
-
                 if (!usedID.Contains(id))
                 {
                     trackItems.Add(new TrackItem
