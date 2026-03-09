@@ -1,21 +1,5 @@
 [
   {
-    "ContainingType": "Spotify_backend.Controllers.TestController",
-    "Method": "GetSteamlineId",
-    "RelativePath": "{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Spotify_backend.Controllers.AuthController",
     "Method": "Callback",
     "RelativePath": "callback",
@@ -37,6 +21,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "GetCurrentTrack",
+    "RelativePath": "CurrentTrack/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "GetDevice",
+    "RelativePath": "Devices/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "GetTracks",
+    "RelativePath": "GetTracks/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Spotify_backend.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "login",
@@ -44,6 +76,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "Pause",
+    "RelativePath": "Pause/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -95,6 +143,54 @@
         "Name": "UserId",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "Loop",
+    "RelativePath": "Repeat/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "Resume",
+    "RelativePath": "Resume/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.TestController",
+    "Method": "Skip",
+    "RelativePath": "Skip/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -113,3 +113,26 @@ C:\Users\tobia\Desktop\Stuff\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\rjsmcsh
 C:\Users\tobia\Desktop\Stuff\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\tobia\Desktop\Stuff\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\tobia\Desktop\Stuff\SpotifyAPP\Spotify_backend\obj\Debug\net8.0\Spotify_.AE01B520.Up2Date
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.Net.ServerSentEvents.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\System.Threading.Channels.dll
+C:\Users\Tobias Lauritsen\OneDrive\Skrivebord\Folder\SpotifyAPP\Spotify_backend\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
