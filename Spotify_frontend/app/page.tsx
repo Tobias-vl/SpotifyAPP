@@ -1,6 +1,5 @@
-import { SocketDemo } from "@/app/components/SocketDemo";
-import Page from "@/app/login/page";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Page />;
+  redirect("/login");
 }

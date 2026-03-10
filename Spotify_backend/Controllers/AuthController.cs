@@ -38,7 +38,7 @@ namespace Spotify_backend.Controllers
 
             player.SetName(profile.display_name);
 
-            return Ok(profile.id);
+            return Redirect("http://localhost:3000/lobby");
         }
 
         [HttpPost("RenewToken")]
