@@ -31,14 +31,18 @@ namespace Spotify_backend.Controllers
         public async Task<IActionResult> Callback(string code, string state)
         {
             
-            var tokenObj = await _spotify.ExchangeCodeForToken(code, state);
+            await _spotify.ExchangeCodeForToken(code, state);
 
             var player = _playerManager.Get(state) ?? throw new Exception("Player was Null");
             var profile = await _GetSpotify.GetProfile(player.AccessToken, state);
 
             player.SetName(profile.display_name);
 
-            return Redirect("http://localhost:3000/lobby");
+            var expiresAtUnix = new DateTimeOffset(player.ExpiresAt).ToUnixTimeSeconds();
+            var redirectUrl =
+                $"http://localhost:3000/auth/callback?userId={Uri.EscapeDataString(profile.id)}";
+
+            return Redirect(redirectUrl);
         }
 
         [HttpPost("RenewToken")]

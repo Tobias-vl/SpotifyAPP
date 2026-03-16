@@ -4,12 +4,19 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import "./lobby.css"
+import { useRouter } from "next/navigation";
 
 export default function LobbyPage() {
     const [lobbyName, setLobbyName] = useState("")
+    const router = useRouter();
 
     return (
         <main className="lobby-page">
+
+                    <div className="lobby-buttons">
+                        <Button className="w-full"  onClick={() => router.push("/dev")} >dev page </Button>
+                    </div>
+
             <Card className="mx-auto w-full max-w-md shadow-md">
                 <CardHeader>
                     <CardTitle>Lobby</CardTitle>
