@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import "./dev.css"
 
-export default function LobbyPage() {
+export default function DevPage() {
     const [userId, setUserId] = useState("")
     const [responseText, setResponseText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
