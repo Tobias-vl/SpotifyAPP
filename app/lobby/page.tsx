@@ -1,14 +1,38 @@
 "use client";
 
 import { useState } from "react"
+import { useLobbyEvents } from "@/hooks/useSocketMessages";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import "./lobby.css"
 import { useRouter } from "next/navigation";
 
 export default function LobbyPage() {
+    // Initialize lobby events - this hook handles its own useEffect internally
+    useLobbyEvents();
+    
     const [lobbyName, setLobbyName] = useState("")
+    const [StatusText, setStatustext] = useState("")
     const router = useRouter();
+
+    async function CreateLobby(){
+        if (lobbyName == null) {
+            setStatustext("Please inter a LobbyName")
+            return
+        } 
+        if (lobbyName.length >= 33){
+            setStatustext("Lobby Name can only be up to 32 characters")
+            return
+        }
+        if (!(/^[a-zA-Z]*$/.test(lobbyName))){
+            setStatustext("Lobby Name can only be \"normal characters\"")
+            return
+        }
+        setStatustext("Creating Lobby")
+    }
+
+    
+
 
     return (
         <main className="lobby-page">
