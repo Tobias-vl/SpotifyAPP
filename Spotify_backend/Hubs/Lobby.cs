@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.SignalR;
-using Spotify_backend.Services;
 
 namespace Spotify_backend.Hubs;
 

@@ -66,6 +66,97 @@
         }
       }
     },
+    "/create": {
+      "post": {
+        "tags": [
+          "Lobbies"
+        ],
+        "parameters": [
+          {
+            "name": "hostUserId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lobbyName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/{lobbyId}/join": {
+      "post": {
+        "tags": [
+          "Lobbies"
+        ],
+        "parameters": [
+          {
+            "name": "lobbyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/list": {
+      "get": {
+        "tags": [
+          "Lobbies"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/{lobbyId}": {
+      "get": {
+        "tags": [
+          "Lobbies"
+        ],
+        "parameters": [
+          {
+            "name": "lobbyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/playlist/{userId}": {
       "get": {
         "tags": [

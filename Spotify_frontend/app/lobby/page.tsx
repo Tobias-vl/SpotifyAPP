@@ -8,7 +8,26 @@ import { useRouter } from "next/navigation";
 
 export default function LobbyPage() {
     const [lobbyName, setLobbyName] = useState("")
+    const [StatusText, setStatustext] = useState("")
     const router = useRouter();
+
+    async function CreateLobby(){
+        if (lobbyName == null) {
+            setStatustext("Please inter a LobbyName")
+            return
+        } 
+        if (lobbyName.length >= 33){
+            setStatustext("Lobby Name can only be up to 32 characters")
+            return
+        }
+        if (!(/^[a-zA-Z]*$/.test(lobbyName))){
+            setStatustext("Lobby Name can only be \"normal characters\"")
+            return
+        }
+    }
+
+    setStatustext("Creating Lobby")
+
 
     return (
         <main className="lobby-page">

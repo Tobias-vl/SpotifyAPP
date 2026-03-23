@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "Spotify_backend.Controllers.LobbiesController",
+    "Method": "GetLobby",
+    "RelativePath": "{lobbyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lobbyId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.LobbiesController",
+    "Method": "JoinLobby",
+    "RelativePath": "{lobbyId}/join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lobbyId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Spotify_backend.Controllers.AuthController",
     "Method": "Callback",
     "RelativePath": "callback",
@@ -14,6 +51,27 @@
       },
       {
         "Name": "state",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.LobbiesController",
+    "Method": "CreateLobby",
+    "RelativePath": "create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hostUserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "lobbyName",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -66,6 +124,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Spotify_backend.Controllers.LobbiesController",
+    "Method": "ListLobbies",
+    "RelativePath": "list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

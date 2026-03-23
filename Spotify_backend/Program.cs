@@ -33,7 +33,7 @@ builder.Services.AddSingleton<SpotifyPlayerManager>();
 builder.Services.AddScoped<SpotifyGetInfo>();
 builder.Services.AddScoped<SpotifyPlaylistService>();
 builder.Services.AddScoped<MediaPlayer>();
-builder.Services.AddScoped<LobbyManeger>();
+builder.Services.AddScoped<LobbyManager>();
 
 builder.Services.AddHttpClient<SpotifyGetInfo>();
 builder.Services.AddHttpClient<SpotifyAuthService>();
@@ -65,5 +65,6 @@ app.UseSession();
 
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<LobbyHub>("/hubs/Lobby");
 
 app.Run();
