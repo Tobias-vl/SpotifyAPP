@@ -5,7 +5,7 @@ namespace Spotify_backend.Hubs;
 
 public class LobbyHub : Hub
 {
-    private readonly LobbyManager _lobbyManager;
+    private readonly LobbyManager? _lobbyManager;
     
     // Group users by lobby
     public async Task JoinLobby(string lobbyId, string userId)

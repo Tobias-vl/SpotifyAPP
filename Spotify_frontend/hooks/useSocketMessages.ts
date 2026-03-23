@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ensureConnected, getConnection } from "@/lib/socket";
 
+
 type ServerMessage = {
   text: string;
 };
@@ -70,4 +71,26 @@ export function useSocketMessages() {
     messages,
     sendMessage,
   };
+}
+
+export const useLobbyEvents = () => {
+  useEffect(() => {
+    const connection = getConnection();
+
+    const onMemberJoined = (userId: string) => {
+      console.log(`User ${userId} joined the lobby`);
+    };
+
+    const onMemberLeft = (userId: string) => {
+      console.log(`User ${userId} left the lobby`);
+    };
+
+    connection.on('MemberJoined', onMemberJoined);
+    connection.on('MemberLeft', onMemberLeft);
+
+    return () => {
+      connection.off('MemberJoined', onMemberJoined);
+      connection.off('MemberLeft', onMemberLeft);
+    };
+  }, []);
 }

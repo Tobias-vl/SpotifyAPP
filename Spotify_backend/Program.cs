@@ -33,7 +33,7 @@ builder.Services.AddSingleton<SpotifyPlayerManager>();
 builder.Services.AddScoped<SpotifyGetInfo>();
 builder.Services.AddScoped<SpotifyPlaylistService>();
 builder.Services.AddScoped<MediaPlayer>();
-builder.Services.AddScoped<LobbyManager>();
+builder.Services.AddSingleton<LobbyManager>();
 
 builder.Services.AddHttpClient<SpotifyGetInfo>();
 builder.Services.AddHttpClient<SpotifyAuthService>();

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   HubConnection,
   HubConnectionBuilder,
@@ -5,19 +7,8 @@ import {
   LogLevel,
 } from "@microsoft/signalr";
 
-import React, { createContext, useContext, useEffect, useRef, useState} from 'react';
 let connection: HubConnection | null = null;
 
-export const SignalRContext = createContext(null);
-export const SignalRProvider = ({children, serverUrl, accessToken, getAccessToken }) => {
-    const [hub, setHub] = useState(null);
-    useState(() => {
-        if (!serverUrl) {
-            setHub(null);
-            return;
-        }
-    })
-}
 export function getConnection(): HubConnection {
   if (!connection) {
     connection = new HubConnectionBuilder()
@@ -30,7 +21,7 @@ export function getConnection(): HubConnection {
   return connection;
 }
 
-export async function ensureConnected() {
+export async function ensureConnected(): Promise<HubConnection> {
   const hubConnection = getConnection();
 
   if (hubConnection.state === HubConnectionState.Disconnected) {

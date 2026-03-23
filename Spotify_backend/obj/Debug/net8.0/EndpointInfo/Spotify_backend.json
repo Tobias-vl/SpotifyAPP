@@ -89,12 +89,58 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              }
+            }
           }
         }
       }
     },
     "/{lobbyId}/join": {
+      "post": {
+        "tags": [
+          "Lobbies"
+        ],
+        "parameters": [
+          {
+            "name": "lobbyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/{lobbyId}/leave": {
       "post": {
         "tags": [
           "Lobbies"
@@ -130,7 +176,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lobby"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lobby"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lobby"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -152,7 +224,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lobby"
+                }
+              }
+            }
           }
         }
       }
@@ -363,5 +452,37 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "Lobby": {
+        "type": "object",
+        "properties": {
+          "lobbyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "lobbyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "hostUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "membersUserId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

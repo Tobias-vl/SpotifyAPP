@@ -11,33 +11,52 @@
 
     public class LobbyManager
     {
-        private readonly Dictionary<string, Lobby> _Lobbies = new();
+        private readonly Dictionary<string, Lobby> _lobbies = new();
 
         public Lobby CreateLobby(string hostUserId, string lobbyName)
         {
-            Lobby lobby = new();
-            lobby.HostUserId = hostUserId;
-            lobby.LobbyName = lobbyName;
-            _Lobbies[lobby.LobbyId] = lobby;
+                Lobby lobby = new()
+            {
+                HostUserId = hostUserId,
+                LobbyName = lobbyName,
+            };
+            lobby.MembersUserId.Add(hostUserId);
+            _lobbies[lobby.LobbyId] = lobby;
             return lobby;
         }
+
         public bool JoinLobby(string lobbyId, string userId)
         {
-            _Lobbies[lobbyId].MembersUserId.Add(userId);
-            return true;
+            if (_lobbies.TryGetValue(lobbyId, out var lobby))
+            {
+                if (!lobby.MembersUserId.Contains(userId))
+                {
+                    lobby.MembersUserId.Add(userId);
+                }
+                return true;
+            }
+            return false;
         }
+
         public bool LeaveLobby(string lobbyId, string userId)
         {
-            _Lobbies[lobbyId].MembersUserId.Remove(userId);
-            return true;
+            if (_lobbies.TryGetValue(lobbyId, out var lobby))
+            {
+                lobby.MembersUserId.Remove(userId);
+                return true;
+            }
+            return false;
         }
+
         public Lobby? GetLobby(string lobbyId)
         {
-            return _Lobbies[lobbyId];
+            _lobbies.TryGetValue(lobbyId, out var lobby);
+            return lobby;
         }
+
         public List<Lobby> ListLobbies()
         {
-            return _Lobbies.Values.ToList();
+            return _lobbies.Values.ToList();
         }
     }
 }
