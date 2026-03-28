@@ -5,25 +5,22 @@ namespace Spotify_backend.Hubs;
 
 public class LobbyHub : Hub
 {
-    private readonly LobbyManager? _lobbyManager;
-    
-    // Group users by lobby
-    public async Task JoinLobby(string lobbyId, string userId)
+    private readonly LobbyManager _lobbyManager;
+    private readonly SpotifyPlayerManager _playerManager;
+
+    public LobbyHub(LobbyManager lobbyManager, SpotifyPlayerManager playerManager)
+    {
+        _lobbyManager = lobbyManager;
+        _playerManager = playerManager;
+    }
+
+    public async Task JoinLobbyGroup(string lobbyId, string userId)
     {
         await Groups.AddToGroupAsync(Context.ConnectionId, lobbyId);
-        var lobby = _lobbyManager.GetLobby(lobbyId);
-        await Clients.Group(lobbyId).SendAsync("MemberJoined", userId);
     }
-    
-    public async Task LeaveLobby(string lobbyId, string userId)
+
+    public async Task LeaveLobbyGroup(string lobbyId, string userId)
     {
         await Groups.RemoveFromGroupAsync(Context.ConnectionId, lobbyId);
-        var lobby = _lobbyManager.GetLobby(lobbyId);
-        await Clients.Group(lobbyId).SendAsync("MemberLeft", userId);
-    }
-    
-    public async Task SendMessage(string lobbyId, string userId, string message)
-    {
-        await Clients.Group(lobbyId).SendAsync("ReceiveMessage", new { userId, message });
     }
 }

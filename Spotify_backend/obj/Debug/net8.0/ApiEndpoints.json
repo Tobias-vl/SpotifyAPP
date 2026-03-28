@@ -39,12 +39,22 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "Spotify_backend.Models.JoinRequest",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Spotify_backend.Services.Lobby",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Spotify_backend.Controllers.LobbiesController",
@@ -60,9 +70,9 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "Spotify_backend.Models.LeaveRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -97,14 +107,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "hostUserId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "lobbyName",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "Spotify_backend.Models.CreateLobbyRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

@@ -1,5 +1,7 @@
 ﻿namespace Spotify_backend.Services
 {
+
+    
     public class Lobby
     {
         public string LobbyId { get; set; } = Guid.NewGuid().ToString();
@@ -11,18 +13,28 @@
 
     public class LobbyManager
     {
-        private readonly Dictionary<string, Lobby> _lobbies = new();
+        private static readonly Dictionary<string, Lobby> dictionary = new();
+        private readonly Dictionary<string, Lobby> _lobbies = dictionary;
+        private readonly SpotifyPlayerManager _playermanger;
 
-        public Lobby CreateLobby(string hostUserId, string lobbyName)
+        public LobbyManager(Dictionary<string, Lobby> lobbies, SpotifyPlayerManager playermanger)
         {
-                Lobby lobby = new()
+            _lobbies = lobbies;
+            _playermanger = playermanger;
+        }
+
+        public Task<Lobby> CreateLobby(string hostUserId, string lobbyName)
+        {
+            Lobby lobby = new()
             {
                 HostUserId = hostUserId,
                 LobbyName = lobbyName,
             };
-            lobby.MembersUserId.Add(hostUserId);
+            var player = _playermanger.Get(hostUserId);
+
+            lobby.MembersUserId.Add(player.Name);
             _lobbies[lobby.LobbyId] = lobby;
-            return lobby;
+            return Task.FromResult(lobby);
         }
 
         public bool JoinLobby(string lobbyId, string userId)
@@ -31,7 +43,8 @@
             {
                 if (!lobby.MembersUserId.Contains(userId))
                 {
-                    lobby.MembersUserId.Add(userId);
+                    var player = _playermanger.Get(userId);
+                    lobby.MembersUserId.Add(player.Name);
                 }
                 return true;
             }
@@ -42,7 +55,8 @@
         {
             if (_lobbies.TryGetValue(lobbyId, out var lobby))
             {
-                lobby.MembersUserId.Remove(userId);
+                var player = _playermanger.Get(userId);
+                lobby.MembersUserId.Remove(player.Name);
                 return true;
             }
             return false;
@@ -58,5 +72,7 @@
         {
             return _lobbies.Values.ToList();
         }
+
+
     }
 }
