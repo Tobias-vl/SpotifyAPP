@@ -1,2 +1,3 @@
 config.yaml
 .vs/
+.node_modules/
