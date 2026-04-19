@@ -17,7 +17,6 @@ export default function LobbyDetailPage() {
 
   const [lobbyData, setLobbyData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [Status, SetStatus] = useState(" ");
   const [members, setMembers] = useState<string[]>([]);
   const backendBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:7115";
   const createdByDisplayName =
@@ -70,17 +69,6 @@ export default function LobbyDetailPage() {
     } catch (error) {
       console.error("Error leaving lobby:", error);
     }
-  }
-
-  async function startGame() {
-    // if (members.length == 1){
-    //   SetStatus("Lobby needs to contain at less 2 players")
-    //   return 
-    // } 
-
-    router.push(`/lobby/${lobbyId}/game`)
-
-
   }
 
   if (isLoading) {
@@ -155,16 +143,11 @@ export default function LobbyDetailPage() {
               </Button>
 
               <Button
-                onClick={startGame}
                 className="button-play"
                 >
                   Start Game
               </Button>
 
-              </div>
-
-              <div>
-                <p className="lobby-content">{Status}</p>
               </div>
 
             </CardContent>

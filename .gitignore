@@ -1,6 +1,27 @@
 config.yaml
-.vs/
-node_modules
 
-package-lock.json
-package.json
+# Visual Studio / VS Code caches
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build artifacts
+**/bin/
+**/obj/
+
+# Node artifacts
+node_modules/
+**/node_modules/
+
+# Frontend build artifacts
+**/.next/
+**/out/
+**/dist/
+
+# Logs and local env files
+*.log
+.env
+.env.*
