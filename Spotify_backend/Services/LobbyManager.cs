@@ -1,15 +1,26 @@
-﻿namespace Spotify_backend.Services
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Spotify_backend.Services
 {
 
     
     public class Lobby
     {
-        public string LobbyId { get; set; } = Guid.NewGuid().ToString();
-        public string LobbyName { get; set; }
-        public string HostUserId { get; set; }
-        public List<string> MembersUserId { get; set; } = new();
+        public string LobbyId { get; set; } = string.Empty;
+        public string LobbyName { get; set; } = string.Empty;
+        public string HostUserId { get; set; } = string.Empty;
+        public string HostName { get; set; } = string.Empty;
+        public List<Player> MembersUserId { get; set; } = new();
         public DateTime CreateAt { get; set; } = DateTime.Now;
     }
+
+    public class Player
+    {
+        public string Name { get; set; } = string.Empty;
+        public bool Voted { get; set; } = false;
+    }
+
+
 
     public class LobbyManager
     {
@@ -25,14 +36,17 @@
 
         public Task<Lobby> CreateLobby(string hostUserId, string lobbyName)
         {
-            Lobby lobby = new()
-            {
-                HostUserId = hostUserId,
-                LobbyName = lobbyName,
-            };
             var player = _playermanger.Get(hostUserId);
 
-            lobby.MembersUserId.Add(player.Name);
+            Lobby lobby = new()
+            {
+                LobbyId = GenerateLobbyId(),
+                HostUserId = hostUserId,
+                HostName = player?.Name ?? hostUserId,
+                LobbyName = lobbyName,
+            };
+
+            lobby.MembersUserId.Add(new Player { Name = player?.Name ?? hostUserId });
             _lobbies[lobby.LobbyId] = lobby;
             return Task.FromResult(lobby);
         }
@@ -41,10 +55,12 @@
         {
             if (_lobbies.TryGetValue(lobbyId, out var lobby))
             {
-                if (!lobby.MembersUserId.Contains(userId))
+                var player = _playermanger.Get(userId);
+                var playerName = player?.Name ?? userId;
+
+                if (!lobby.MembersUserId.Any(p => p.Name == playerName))
                 {
-                    var player = _playermanger.Get(userId);
-                    lobby.MembersUserId.Add(player.Name);
+                    lobby.MembersUserId.Add(new Player { Name = playerName });
                 }
                 return true;
             }
@@ -55,8 +71,12 @@
         {
             if (_lobbies.TryGetValue(lobbyId, out var lobby))
             {
-                var player = _playermanger.Get(userId);
-                lobby.MembersUserId.Remove(player.Name);
+                var playerName = _playermanger.Get(userId)?.Name ?? userId;
+                var playerToRemove = lobby.MembersUserId.FirstOrDefault(p => p.Name == playerName);
+                if (playerToRemove != null)
+                {
+                    lobby.MembersUserId.Remove(playerToRemove);
+                }
                 return true;
             }
             return false;
@@ -73,6 +93,48 @@
             return _lobbies.Values.ToList();
         }
 
+        private string GenerateLobbyId(int length = 6)
+        {
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string id;
 
+            do
+            {
+                char[] buffer = new char[length];
+                for (int i = 0; i < length; i++)
+                {
+                    int index = System.Security.Cryptography.RandomNumberGenerator.GetInt32(letters.Length);
+                    buffer[i] = letters[index];
+                }
+                id = new string(buffer);
+            } while (_lobbies.ContainsKey(id));
+
+            return id;
+        }
+
+        public bool HasEveryPlayerVoted(string lobbyID)
+        {
+            Lobby? lobby = GetLobby(lobbyID);
+            
+            if (lobby == null)
+                return false;
+
+            return lobby.MembersUserId.All(p => p.Voted);
+        }
+
+        public bool Voted(string lobbyId, string userId)
+        {
+            if (_lobbies.TryGetValue(lobbyId, out var lobby))
+            {
+                var playerName = _playermanger.Get(userId)?.Name ?? userId;
+                var player = lobby.MembersUserId.FirstOrDefault(p => p.Name == playerName);
+                if (player != null)
+                {
+                    player.Voted = true;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc;
 using Spotify_backend.Models;
 using Spotify_backend.Services;
 using System.Reflection.Metadata.Ecma335;
@@ -11,24 +12,28 @@ namespace Spotify_backend.Controllers
         private readonly SpotifyPlaylistService _spotifyPlaylistService;
         private readonly SpotifyGetInfo _spotifyGetInfo;
         private readonly MediaPlayer _mediaPlayer;
+        private readonly LobbyManager _LobbyManager;
 
         public TestController(
             SpotifyPlayerManager playerManager,
             SpotifyPlaylistService spotifyPlaylistService,
             SpotifyGetInfo spotifyGetInfo,
-            MediaPlayer mediaPlayer)
+            MediaPlayer mediaPlayer,
+            LobbyManager lobbyManager,
+            )
         {
             _playerManager = playerManager;
             _spotifyPlaylistService = spotifyPlaylistService;
             _spotifyGetInfo = spotifyGetInfo;
             _mediaPlayer = mediaPlayer;
+            _LobbyManager = lobbyManager;
         }
 
         [HttpGet("playlist/{userId}")]
         public async Task<IActionResult> TestGetPlaylists(string userId)
         {
             var player = _playerManager.Get(userId);
-            
+
             if (player == null)
                 return BadRequest("Player not found in manager.");
 
@@ -88,7 +93,7 @@ namespace Spotify_backend.Controllers
 
             string device_id = GetDeviceID(devices);
 
-            await _mediaPlayer.Pause(device_id,  player.AccessToken);
+            await _mediaPlayer.Pause(device_id, player.AccessToken);
 
             return Ok();
         }
@@ -153,6 +158,21 @@ namespace Spotify_backend.Controllers
             return Ok(json);
         }
 
+        [HttpGet("HasAllVoted/{LobbyId}")]
+        public IActionResult HasAllVoted(string LobbyId)
+        {
+            var hasVoted = _LobbyManager.HasEveryPlayerVoted(LobbyId);
+            return Ok(hasVoted);
+        }
+
+        [HttpPost("Voted/{LobbyId}/{userId}")]
+        public IActionResult Voted(string LobbyId, string userId)
+        {
+            var Voted = _LobbyManager.Voted(LobbyId, userId);
+
+            return Ok(Voted);
+        }
+
         public string GetDeviceID(Device devices)
         {
             string device_id = "";
@@ -169,6 +189,7 @@ namespace Spotify_backend.Controllers
             return device_id;
 
         }
+
 
 
 
