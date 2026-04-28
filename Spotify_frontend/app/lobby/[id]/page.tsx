@@ -7,6 +7,8 @@ import { useLobbyEvents } from "@/hooks/useSocketMessages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+type Member = string | { name: string; voted: boolean };
+
 export default function LobbyDetailPage() {
   const params = useParams();
   const lobbyId = params.id as string;
@@ -18,13 +20,17 @@ export default function LobbyDetailPage() {
   const [lobbyData, setLobbyData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [Status, SetStatus] = useState(" ");
-  const [members, setMembers] = useState<string[]>([]);
+  const [members, setMembers] = useState<Member[]>([]);
   const backendBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:7115";
+  const getMemberName = (member: Member | undefined) => {
+    if (!member) return undefined;
+    return typeof member === 'string' ? member : member.name;
+  };
   const createdByDisplayName =
     lobbyData?.hostName ||
     lobbyData?.hostUserId ||
     lobbyData?.userId ||
-    members[0] ||
+    getMemberName(members[0]) ||
     "Unknown";
 
   useEffect(() => {
@@ -133,15 +139,19 @@ export default function LobbyDetailPage() {
                 {members.length === 0 ? (
                   <p style={{ color: "#999" }}>No members yet</p>
                 ) : (
-                  members.map((member) => (
-                    <div 
-                      key={member}
-                      className="member-item"
-                    >
-                      <div className="member-status" />
-                      {member} {member === userId && "(You)"}
-                    </div>
-                  ))
+                  members.map((member) => {
+                    const memberName = typeof member === 'string' ? member : member.name;
+                    const memberKey = typeof member === 'string' ? member : member.name;
+                    return (
+                      <div 
+                        key={memberKey}
+                        className="member-item"
+                      >
+                        <div className="member-status" />
+                        {memberName} {memberName === userId && "(You)"}
+                      </div>
+                    );
+                  })
                 )}
               </div>
             </CardContent>

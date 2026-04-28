@@ -19,7 +19,7 @@ namespace Spotify_backend.Controllers
             SpotifyPlaylistService spotifyPlaylistService,
             SpotifyGetInfo spotifyGetInfo,
             MediaPlayer mediaPlayer,
-            LobbyManager lobbyManager,
+            LobbyManager lobbyManager
             )
         {
             _playerManager = playerManager;
@@ -169,7 +169,6 @@ namespace Spotify_backend.Controllers
         public IActionResult Voted(string LobbyId, string userId)
         {
             var Voted = _LobbyManager.Voted(LobbyId, userId);
-
             return Ok(Voted);
         }
 

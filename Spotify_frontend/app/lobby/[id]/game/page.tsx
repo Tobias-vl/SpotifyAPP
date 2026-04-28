@@ -7,6 +7,8 @@ import { useLobbyEvents } from "@/hooks/useSocketMessages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+type Member = string | { name: string; voted: boolean };
+
 export default function LobbyDetailPage() {
   const params = useParams();
   const lobbyId = params.id as string;
@@ -19,15 +21,19 @@ export default function LobbyDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVote, setSelectedVote] = useState<string | null>(null);
   const [status, setStatus] = useState<any>(null);
-  const [members, setMembers] = useState<string[]>([]);
+  const [members, setMembers] = useState<Member[]>([]);
   const [Currentsong, setCurrentSong] = useState("No music playing")
   const [CurrentArtist, setCurrentArtist] = useState("No music playing")
   const backendBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:7115";
+  const getMemberName = (member: Member | undefined) => {
+    if (!member) return undefined;
+    return typeof member === 'string' ? member : member.name;
+  };
   const createdByDisplayName =
     lobbyData?.hostName ||
     lobbyData?.hostUserId ||
     lobbyData?.userId ||
-    members[0] ||
+    getMemberName(members[0]) ||
     "Unknown";
 
   useEffect(() => {
@@ -86,6 +92,7 @@ export default function LobbyDetailPage() {
             return
         } else {
             setStatus("Skipped to next round.")
+            await new Promise(resolve => setTimeout(resolve, 200));
             CurrentSong();
         }
     }
@@ -146,6 +153,24 @@ export default function LobbyDetailPage() {
             <CardContent className="space-y-3">
               <p className="lobby-info-value">{Currentsong}</p>
               <p >{CurrentArtist}</p>
+
+              <div>
+                
+              <Button
+        onClick={() => StartNextRound()}
+        type = "button"
+        className="button-playback"
+        >Next Round
+            </Button>
+            
+            <Button
+            onClick={() => StartNextRound}
+            type = "button"
+            className="button-playback">
+              Pause</Button>
+              
+              
+              </div>
             </CardContent>
           </Card>
 
@@ -158,28 +183,26 @@ export default function LobbyDetailPage() {
                 <p className="empty-state">No members yet</p>
               ) : (
                 <div className="member-list">
-                  {members.map((member) => (
-                    <Button
-                      key={member}
-                      type="button"
-                      variant={selectedVote === member ? "secondary" : "outline"}
-                      className="vote-button"
-                      onClick={() => handleVote(member)}
-                    >
-                      {member} {member === userId ? "(You)" : ""}
-                    </Button>
-                  ))}
+                  {members.map((member) => {
+                    const memberName = typeof member === 'string' ? member : member.name;
+                    const memberKey = typeof member === 'string' ? member : member.name;
+                    return (
+                      <Button
+                        key={memberKey}
+                        type="button"
+                        variant={selectedVote === memberName ? "secondary" : "outline"}
+                        className="vote-button"
+                        onClick={() => handleVote(memberName)}
+                      >
+                        {memberName} {memberName === userId ? "(You)" : ""}
+                      </Button>
+                    );
+                  })}
                 </div>
               )}
             </CardContent>
           </Card>
         </div>
-
-        <div><Button
-        onClick={() => StartNextRound()}
-        type = "button"
-        >Next Round
-            </Button></div>
       </div>
     </main>
   );
