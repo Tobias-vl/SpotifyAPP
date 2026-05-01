@@ -132,7 +132,7 @@ export default function LobbyDetailPage() {
           return
         }
 
-        setPlaybackstatus(false)
+        setPlaybackstatus(true)
       } else {
         const response = await fetch(`${backendBaseUrl}/Pause/${lobbyData.hostUserId}`, {
           method: "POST",
@@ -146,11 +146,9 @@ export default function LobbyDetailPage() {
           return
         }
 
-        setPlaybackstatus(true)
+        setPlaybackstatus(false)
+
       }
-      
-      // Fetch the updated status from server
-      await GetPlaybackStatus()
       CurrentSong()
     } 
     catch {
@@ -232,9 +230,13 @@ export default function LobbyDetailPage() {
         const data = await response.json();
         console.log(data)
 
-        const isPlaying = Boolean(data?.IsPlaying)
-        setPlaybackstatus(isPlaying)
-
+        if (data?.is_playing){
+          console.log("IsPlaying is true, setting PlaybackStatus to true")
+          setPlaybackstatus(true)
+        } else {
+          console.log("IsPlaying is false, setting PlaybackStatus to false")
+          setPlaybackstatus(false)
+        }
     }
     catch{
         console.error("Could not fetch playback status")
@@ -273,7 +275,7 @@ export default function LobbyDetailPage() {
                   type="button"
                   className="PlayandPauseButton"
                 >
-                  {PlaybackStatus ?  <Play size={20} /> : <Pause size={20} />}
+                  {PlaybackStatus ?  <Pause size={20} /> : <Play size={20} />}
                 </button>
 
                 <button
