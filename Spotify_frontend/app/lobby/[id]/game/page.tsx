@@ -6,6 +6,7 @@ import { useUserId } from "@/hooks/useUserId";
 import { useLobbyEvents } from "@/hooks/useSocketMessages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Play, Pause, Repeat as RepeatIcon, SkipForward  } from 'lucide-react';
 
 type Member = string | { name: string; voted: boolean };
 
@@ -25,6 +26,7 @@ export default function LobbyDetailPage() {
   const [Currentsong, setCurrentSong] = useState("No music playing")
   const [CurrentArtist, setCurrentArtist] = useState("No music playing")
   const backendBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:7115";
+  const [PlaybackStatus, setPlaybackstatus] = useState(false);
   const getMemberName = (member: Member | undefined) => {
     if (!member) return undefined;
     return typeof member === 'string' ? member : member.name;
@@ -65,6 +67,13 @@ export default function LobbyDetailPage() {
     }
   }, [lobbyId, userId, backendBaseUrl, router]);
 
+  useEffect(() => {
+    if (lobbyData?.hostUserId) {
+      CurrentSong();
+      GetPlaybackStatus();
+    }
+  }, [lobbyData?.hostUserId]);
+
   function handleVote(member: string) {
     setSelectedVote(member);
     setStatus(`You voted for ${member}.`);
@@ -88,18 +97,91 @@ export default function LobbyDetailPage() {
         })
 
         if (!response.ok){
-            setStatus(`Skip failed (${response.status}).`)
-            return
+          setStatus(`Skip failed (${response.status}).`)
+          return
         } else {
-            setStatus("Skipped to next round.")
-            await new Promise(resolve => setTimeout(resolve, 200));
-            CurrentSong();
+          setStatus("Skipped to next round.")
+          // wait briefly for Spotify to switch tracks, then refresh
+          await new Promise((resolve) => setTimeout(resolve, 200));
+          CurrentSong();
         }
     }
     catch {
       setStatus("Network error while trying to skip track.")
     }
 
+  }
+
+  async function PlayOrPause(){
+    try{
+      if(!lobbyData?.hostUserId) {
+        setStatus(`Failed to Play or Pause Song`)
+        return
+      }
+      
+      if (!PlaybackStatus){
+        const response = await fetch(`${backendBaseUrl}/Resume/${lobbyData.hostUserId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (!response.ok){
+          setStatus(`Play failed (${response.status}).`)
+          return
+        }
+
+        setPlaybackstatus(false)
+      } else {
+        const response = await fetch(`${backendBaseUrl}/Pause/${lobbyData.hostUserId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (!response.ok){
+          setStatus(`Pause failed (${response.status}).`)
+          return
+        }
+
+        setPlaybackstatus(true)
+      }
+      
+      // Fetch the updated status from server
+      await GetPlaybackStatus()
+      CurrentSong()
+    } 
+    catch {
+      setStatus(`Network error while trying to Play or Pause track.`)
+    }
+  }
+
+  async function Repeat(){
+    try{
+      if (!lobbyData?.hostUserId) {
+        setStatus("Host user was not found.")
+        return
+      }
+
+      const response = await fetch(`${backendBaseUrl}/Repeat/${lobbyData.hostUserId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      if (!response.ok){
+        setStatus(`Repeat failed (${response.status}).`)
+        return
+      } else {
+        setStatus("Repeat toggled.")
+      }
+    }
+    catch {
+      setStatus("Network error while trying to toggle repeat.")
+    }
   }
 
   async function CurrentSong(){
@@ -136,6 +218,28 @@ export default function LobbyDetailPage() {
     }
   }
 
+  async function GetPlaybackStatus(){
+    try{
+        if (!lobbyData?.hostUserId) {
+            return
+        }
+
+        const response = await fetch(`${backendBaseUrl}/CurrentTrack/${lobbyData.hostUserId}`)
+
+        if (!response.ok){
+            return 
+        }
+        const data = await response.json();
+        console.log(data)
+
+        const isPlaying = Boolean(data?.IsPlaying)
+        setPlaybackstatus(isPlaying)
+
+    }
+    catch{
+        console.error("Could not fetch playback status")
+    }
+  }
 
   return (
     <main>
@@ -148,28 +252,38 @@ export default function LobbyDetailPage() {
         <div className="lobby-content">
           <Card>
             <CardHeader>
-              <CardTitle>Current Song</CardTitle>
+              <CardTitle className="current-song-title">Current Song</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="current-song-content">
               <p className="lobby-info-value">{Currentsong}</p>
-              <p >{CurrentArtist}</p>
+              <p>{CurrentArtist}</p>
 
-              <div>
-                
-              <Button
-        onClick={() => StartNextRound()}
-        type = "button"
-        className="button-playback"
-        >Next Round
-            </Button>
-            
-            <Button
-            onClick={() => StartNextRound}
-            type = "button"
-            className="button-playback">
-              Pause</Button>
-              
-              
+              <div className="button-controls">
+
+                <button
+                  onClick={() => Repeat()}
+                  type="button"
+                  className="PlayandPauseButton"
+                >
+                  <RepeatIcon size={20} />
+                </button>
+
+                <button
+                  onClick={() => PlayOrPause()}
+                  type="button"
+                  className="PlayandPauseButton"
+                >
+                  {PlaybackStatus ?  <Play size={20} /> : <Pause size={20} />}
+                </button>
+
+                <button
+                onClick={() => StartNextRound()}
+                type="button"
+                className="PlayandPauseButton">
+                  <SkipForward></SkipForward>
+                </button>
+
+
               </div>
             </CardContent>
           </Card>

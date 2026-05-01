@@ -27,14 +27,18 @@ main {
   margin-bottom: 1rem;
 }
 
+
 .lobby-content {
   display: grid;
-  grid-template-columns: 1fr;
+  justify-items: center;
   gap: 1rem;
+  width: 100%;
+  max-width: 900px;
 }
 
 .lobby-content > * {
   width: 100%;
+  max-width: 600px;
 }
 
 .lobby-info {
@@ -108,12 +112,30 @@ main {
   flex: 1;
 }
 
-.button-playback{
+.PlayandPauseButton{
   flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-song-title {
+  text-align: left;
+}
+
+.current-song-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
-  color:white;
-  background-color: #666;
-  padding-left: auto;
+}
+
+.button-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {

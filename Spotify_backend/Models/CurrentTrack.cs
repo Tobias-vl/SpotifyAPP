@@ -4,6 +4,9 @@ public class CurrenttrackItem
 {
     [JsonPropertyName("item")]
     public CurrentTrack Item { get; set; }
+
+    [JsonPropertyName("is_playing")]
+    public bool IsPlaying { get; set; }
 }
 
 public class CurrentTrack
@@ -16,6 +19,9 @@ public class CurrentTrack
 
     [JsonPropertyName("artists")]
     public List<CurrentArtist> Artists { get; set; }
+
+    [JsonPropertyName("duration_ms")]
+    public int DurationMs { get; set; }
 }
 
 public class CurrentArtist
